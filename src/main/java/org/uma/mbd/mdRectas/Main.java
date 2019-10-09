@@ -35,7 +35,7 @@ public class Main {
         }
         catch (RuntimeException e)
         {
-            System.out.println("Las rectas son paralelas");
+            System.out.println("Las rectas son paralelas.");
         }
 
         System.out.println("Punto de intersección: " + recta1.interseccionCon(new Recta(new Vector(0,5), new Punto(0,1))));
