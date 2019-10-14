@@ -26,19 +26,22 @@ public class Libreria {
 
     public void addLibro(String autor, String titulo, double precioBase)
     {
-        int i = posicionLibro(autor, titulo);
         Libro libro = new Libro(autor, titulo, precioBase);
-        if (i<0)
-            addLibro(libro);
-        else
-            libros[i] = libro;
+        addLibro(libro);
     }
 
     private void addLibro(Libro libro)
     {
-        aseguraQueCabe();
-        libros[numLibros] = libro;
-        numLibros++;
+        int i = posicionLibro(libro.getAutor(), libro.getTitulo());
+        if (i<0)
+        {
+            aseguraQueCabe();
+            libros[numLibros] = libro;
+            numLibros++;
+        }
+        else
+            libros[i] = libro;
+
     }
 
     private int posicionLibro(String autor, String titulo)
