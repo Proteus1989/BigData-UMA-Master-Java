@@ -83,16 +83,17 @@ public class Libreria {
 
     @Override
     public String toString() {
-        String salida = "[";
-        for(int i=0; i<numLibros; i++)
+        StringBuilder sb = new StringBuilder("[");
+        for(int i=0; i < libros.length -1; i++)
         {
-            salida += libros[i];
-            if(i < numLibros -1)
-            {
-                salida += ", ";
-            }
+            sb.append(libros[i]);
+            sb.append(",");
         }
+        if(libros.length > 0)
+            sb.append(libros[libros.length-1]);
 
-        return salida + "]";
+        sb.append("]");
+
+        return sb.toString();
     }
 }
