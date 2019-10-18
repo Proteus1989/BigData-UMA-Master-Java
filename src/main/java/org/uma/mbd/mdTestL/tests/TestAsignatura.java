@@ -2,6 +2,7 @@ package org.uma.mbd.mdTestL.tests;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
 public class TestAsignatura {
     private String nombre;
@@ -25,12 +26,25 @@ public class TestAsignatura {
 
         for(String dato : datos)
         {
+            /*
             String[] tokens = dato.split("[:+]+");
             String nombreAlumno = tokens[0];
             int aciertos = Integer.parseInt(tokens[1]);
             int errores = Integer.parseInt(tokens[2]);
-
             examenes.add(new Test(nombreAlumno, aciertos, errores));
+            */
+
+            try(Scanner sc = new Scanner(dato))
+            {
+                sc.useDelimiter("[:+]");
+                String nombreAlumno = sc.next();
+                int aciertos = sc.nextInt();
+                int errores = sc.nextInt();
+
+                examenes.add(new Test(nombreAlumno, aciertos, errores));
+            }
+
+
         }
 
     }
