@@ -44,7 +44,7 @@ public class Test {
         sb.append(",");
         sb.append(errores);
         sb.append("]");
-        return super.toString();
+        return sb.toString();
     }
 
     public int getErrores() {
