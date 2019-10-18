@@ -1,6 +1,7 @@
 package org.uma.mbd.mdLibreriaV1.libreria;
 
 import java.util.Arrays;
+import java.util.StringJoiner;
 
 public class Libreria {
     private Libro[] libros;
@@ -83,8 +84,9 @@ public class Libreria {
 
     @Override
     public String toString() {
+        /* Opcion StringBuilder
         StringBuilder sb = new StringBuilder("[");
-        for(int i=0; i < libros.length -1; i++)
+        for(int i=0; i < numLibros -1; i++)
         {
             sb.append(libros[i]);
             sb.append(",");
@@ -95,5 +97,13 @@ public class Libreria {
         sb.append("]");
 
         return sb.toString();
+        */
+
+        // Opcion StringJoiner
+        StringJoiner sj = new StringJoiner(",","[","]");
+        for(int i=0; i<numLibros; i++)
+            sj.add(libros[i].toString());
+
+        return sj.toString();
     }
 }
