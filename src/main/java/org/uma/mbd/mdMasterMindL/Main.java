@@ -2,14 +2,15 @@ package org.uma.mbd.mdMasterMindL;
 
 import org.uma.mbd.mdMasterMindL.mastermind.MasterMind;
 import org.uma.mbd.mdMasterMindL.mastermind.MasterMindException;
+import org.uma.mbd.mdMasterMindL.mastermind.MasterMindMemoria;
 import org.uma.mbd.mdMasterMindL.mastermind.Movimiento;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws MasterMindException {
-		MasterMind juego = new MasterMind();
-//        MasterMindMemoria juego = new MasterMindMemoria();
+//		MasterMind juego = new MasterMind();
+        MasterMindMemoria juego = new MasterMindMemoria();
 
 //		System.out.println(juego.getSecreto());
         try (Scanner sc = new Scanner(System.in)) {
@@ -26,7 +27,7 @@ public class Main {
                     acertado = mov.getColocadas() == juego.getLongitud();
                     intento++;
                 } catch (MasterMindException e) {
-                    System.out.println(cifras + " no validas: "
+                    System.out.println(cifras + " no es valido: "
                             + e.getMessage());
                 }
             }
