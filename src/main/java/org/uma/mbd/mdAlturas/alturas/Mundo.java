@@ -49,4 +49,16 @@ public class Mundo {
     public List<Pais> getPaises() {
         return paises;
     }
+
+    public Map<String, Integer> numPaisesPorContinente()
+    {
+        Map<String, Integer> map = new HashMap<>();
+        for(Pais pais : paises)
+        {
+            int veces = map.getOrDefault(pais.getContinente(), 0);
+            map.put(pais.getContinente(), veces + 1);
+        }
+
+        return map;
+    }
 }
