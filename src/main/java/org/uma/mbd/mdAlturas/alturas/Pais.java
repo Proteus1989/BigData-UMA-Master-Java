@@ -1,6 +1,6 @@
 package org.uma.mbd.mdAlturas.alturas;
 
-public class Pais {
+public class Pais implements Comparable<Pais> {
 
     private String nombre;
     private String continente;
@@ -40,5 +40,13 @@ public class Pais {
 
     public double getAltura() {
         return altura;
+    }
+
+    @Override
+    public int compareTo(Pais o) {
+        int res = continente.compareTo(o.continente);
+        if(res == 0)
+            res = nombre.compareTo(o.nombre);
+        return res;
     }
 }
