@@ -61,4 +61,31 @@ public class Mundo {
 
         return map;
     }
+
+    public Map<String, Set<Pais>> paisesPorContinente()
+    {
+        Comparator<String> compS = Comparator.comparing(String::length).thenComparing(Comparator.naturalOrder());
+        Map<String, Set<Pais>> map = new TreeMap<>(compS);
+        /* Version inicial
+        Comparator<Pais> comA = (p1, p2) -> Double.compare(p1.getAltura(), p2.getAltura());
+        Comparator<Pais> comN = (p1, p2) -> p1.getNombre().compareTo(p2.getNombre());
+         */
+        /* Version mejorada
+        // Comparator<Pais> comA = Comparator.comparing(p -> p.getAltura()); // Igualmente funciona
+        Comparator<Pais> comA = Comparator.comparingDouble(p -> p.getAltura());
+        Comparator<Pais> comN = Comparator.comparing(p -> p.getNombre());
+         */
+        // Version final
+        Comparator<Pais> comA = Comparator.comparing(Pais::getAltura);
+        Comparator<Pais> comN = Comparator.comparing(Pais::getNombre);
+
+        Comparator<Pais> comp = comA.thenComparing(comN);
+        for(Pais pais : paises)
+        {
+            String continente = pais.getContinente();
+            Set<Pais> set = map.computeIfAbsent(continente, c -> new TreeSet<>(comp));
+            set.add(pais);
+        }
+        return map;
+    }
 }
